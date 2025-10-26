@@ -1,526 +1,518 @@
-(function($) {
+/*-----------------------------------------------------------------
+
+Template Name: Bookle - Book Store WooCommerce Html Template 
+Author:  Gramentheme
+Author URI: https://themeforest.net/user/gramentheme/portfolio
+Version: 1.0.0
+Description: Bookle - Book Store WooCommerce Html Template  
+------------------------------------------------------------------*/
+/*=================================
+   Index Here
+==================================*/
+/*
+01. Mobile Menu 
+02. Sidebar Toggle 
+03. Body Overlay
+04. Video Popup
+05. Counterup
+06. Wow Animation
+07. Nice Select
+8.  Book Slider
+09. Testimonial Slider
+10. Team Slider
+11. Range Slider
+12. Quantity
+13. Back to top btn
+14. Category-click
+15. Gsap Animation  
+*/
+/*=================================
+   Index End
+==================================*/
+
+(function ($) {
     "use strict";
-    
-    /*----------------------------
-     Top Menu Stick
-    ------------------------------ */
-    var header = $('#header-sticky');
-    var win = $(window);
-    
-    win.on('scroll', function() {
-        if ($(this).scrollTop() > 120) {
-            header.addClass("sticky");
-        } else {
-            header.removeClass("sticky");
-        }
-    });
-    
-    /*----------------------------
-     Jquery MeanMenu
-    ------------------------------ */
-    jQuery('#mobile-menu-active').meanmenu();
-    
-    /*----------------------------
-     Wow js active
-    ------------------------------ */
-    new WOW().init();
-    
-    /*----------------------------
-     Slider active
-    ------------------------------ */
-    $('.slider-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        autoplay: false,
-        nav: true,
-        dots: true,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    
-    
-    /* Quickview-active active */
-    $('.quickview-active').owlCarousel({
-        loop: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        nav: true,
-        item: 3,
-        margin: 12,
-    })
-    
-    
-    /*--------------------------
-    Tab active
-    ---------------------------- */
-    var ProductDetailsSmall = $('.product-details-small a');
-    ProductDetailsSmall.on('click', function(e) {
-        e.preventDefault();
-        var $href = $(this).attr('href');
-        ProductDetailsSmall.removeClass('active');
-        $(this).addClass('active');
-        $('.product-details-large .tab-pane').removeClass('active');
-        $('.product-details-large ' + $href).addClass('active');
-    })
-    
-    /*----------------------------
-     Tab slider active
-    ------------------------------ */
-    $('.tab-active').owlCarousel({
-        smartSpeed: 1000,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        margin: 20,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            992: {
-                items: 4
-            },
-            1170: {
-                items: 4
-            },
-            1300: {
-                items: 5
-            }
-        }
-    })
 
-    /*----------------------------
-     Tab slider active2
-    ------------------------------ */
-    $('.tab-active-2').owlCarousel({
-        smartSpeed: 1000,
-        nav: false,
-        autoplay: true,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            },
-            1170: {
-                items: 3
-            },
-            1300: {
-                items: 4
-            }
-        }
-    })
-    
-    /*----------------------------
-     Tab active 3
-    ------------------------------ */
-    $('.tab-active-3').owlCarousel({
-        smartSpeed: 1000,
-        nav: true,
-        autoplay: true,
-        loop: true,
-        margin: 20,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1170: {
-                items: 3
-            },
-            1300: {
-                items: 4
-            }
-        }
-    })
-    
-    /*----------------------------
-     Post active
-    ------------------------------ */
-    $('.post-active').owlCarousel({
-        smartSpeed: 1000,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        items: 3,
-        margin: 30,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1170: {
-                items: 3
-            },
-            1300: {
-                items: 3
-            }
-        }
-    })
-    
-    /*----------------------------
-     Bestseller active
-    ------------------------------ */
-    $('.bestseller-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        margin: 20,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 2
-            }
-        }
-    })
-    
-    /*----------------------------
-     Product active 2
-    ------------------------------ */
-    $('.product-active-2').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    /*----------------------------
-     Product active 3
-    ------------------------------ */
-    $('.product-active-3').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
+    $(document).ready(function () {
 
-    /*----------------------------
-     Testimonial active
-    ------------------------------ */
-    $('.testimonial-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: false,
-        autoplay: true,
-        dots: true,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    
-    /*----------------------------
-     Deal active
-    ------------------------------ */
-    $('.deal-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: false,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-
-    /*----------------------------
-     Post active 2
-    ------------------------------ */
-    $('.post-active-2').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: false,
-        autoplay: false,
-        dots: false,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    
-    /*----------------------------
-     Hot sell active
-    ------------------------------ */
-    $('.hot-sell-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 20,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        items: 3,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            }
-        }
-    })
-    /*----------------------------
-    Blog slider active
-    ------------------------------ */
-    $('.blog-slider-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: false,
-        autoplay: true,
-        dots: false,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    
-    /*----------------------------
-     Parallax active
-    ------------------------------ */
-    // $('.bg').parallax("50%", 0.1);
-    
-    /*----------------------------
-     Flexslider slider active
-    ------------------------------ */
-    $('.flexslider').flexslider({
-        animation: "slide",
-        controlNav: "thumbnails"
-    });
-    
-    /*-------------------------
-      Showlogin toggle function
-    --------------------------*/
-    $('#showlogin').on('click', function() {
-        $('#checkout-login').slideToggle(900);
-    });
-    
-    /*-------------------------
-      Showcoupon toggle function
-    --------------------------*/
-    $('#showcoupon').on('click', function() {
-        $('#checkout_coupon').slideToggle(900);
-    });
-    
-    /*-------------------------
-      Create an account toggle function
-    --------------------------*/
-    $('#cbox').on('click', function() {
-        $('#cbox_info').slideToggle(900);
-    });
-    
-    /*-------------------------
-      Create an account toggle function
-    --------------------------*/
-    $('#ship-box').on('click', function() {
-        $('#ship-box-info').slideToggle(1000);
-    });
-    
-    /*-------------------------
-      Showlogin toggle function
-    --------------------------*/
-    $('#showcat').on('click', function() {
-        $('#hidecat').slideToggle(900);
-    });
-    
-    /*Category accordion*/
-    $('.rx-parent').on('click', function() {
-        $('.rx-child').slideToggle();
-        $(this).toggleClass('rx-change');
-    });
-    
-    /*--------------------------
-       Countdown
-    ---------------------------- */
-    $('[data-countdown]').each(function() {
-        var $this = $(this),
-            finalDate = $(this).data('countdown');
-        $this.countdown(finalDate, function(event) {
-            $this.html(event.strftime('<div class="cdown days"><span class="counting counting-2">%-D</span>days</div><div class="cdown hours"><span class="counting counting-2">%-H</span>hrs</div><div class="cdown minutes"><span class="counting counting-2">%M</span>mins</div><div class="cdown seconds"><span class="counting">%S</span>secs</div>'));
+        // 01.Mobile Menu  
+        $('#mobile-menu').meanmenu({
+            meanMenuContainer: '.mobile-menu',
+            meanScreenWidth: "1199",
+            meanExpand: ['<i class="far fa-plus"></i>'],
         });
-    });
-    
-    
-    /*---------------------
-    	Counter
-    --------------------- */
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
-    
-    
-    /*---------------------
-    	Category menu
-    --------------------- */
-    $('#cate-toggle li.has-sub>a').on('click', function() {
-        $(this).removeAttr('href');
-        var element = $(this).parent('li');
-        if (element.hasClass('open')) {
-            element.removeClass('open');
-            element.find('li').removeClass('open');
-            element.find('ul').slideUp();
-        } else {
-            element.addClass('open');
-            element.children('ul').slideDown();
-            element.siblings('li').children('ul').slideUp();
-            element.siblings('li').removeClass('open');
-            element.siblings('li').find('li').removeClass('open');
-            element.siblings('li').find('ul').slideUp();
-        }
-    });
-    $('#cate-toggle>ul>li.has-sub>a').append('<span class="holder"></span>');
-    
-    
-    /*--------------------------
-     ScrollUp
-    ---------------------------- */
-    $.scrollUp({
-        scrollText: '<i class="fa fa-angle-up"></i>',
-        easingType: 'linear',
-        scrollSpeed: 900,
-        animation: 'fade'
-    });
-    
-    
-    /* Category Dropdown Menu  */
-    if ($(window).width() < 768) {
-        function sidemenuDropdown() {
-            var $this = $('.category-menu');
-            $this.find('nav.menu .cr-dropdown').find('.left-menu').css('display', 'none');
-            $this.find('nav.menu .cr-dropdown ul').slideUp();
-            $this.find('nav.menu .cr-dropdown a').on('click', function(e) {
-                e.preventDefault();
-                $(this).parent('.cr-dropdown').children('ul').slideToggle();
+
+        // 02.Sidebar Toggle 
+        $(".offcanvas__close,.offcanvas__overlay").on("click", function () {
+            $(".offcanvas__info").removeClass("info-open");
+            $(".offcanvas__overlay").removeClass("overlay-open");
+        });
+        $(".sidebar__toggle").on("click", function () {
+            $(".offcanvas__info").addClass("info-open");
+            $(".offcanvas__overlay").addClass("overlay-open");
+        });
+
+        // 03.Body Overlay 
+        $(".body-overlay").on("click", function () {
+            $(".offcanvas__area").removeClass("offcanvas-opened");
+            $(".df-search-area").removeClass("opened");;
+            $(".body-overlay").removeClass("opened");
+        });
+
+
+        $(window).on('scroll', function () {
+            const mainHeaderHeight = $('.header-main').outerHeight();
+
+            if ($(window).scrollTop() > mainHeaderHeight) {
+                $('.sticky-header').css('transform', 'translateY(0)');
+            } else {
+                $('.sticky-header').css('transform', 'translateY(-180%)');
+            }
+        });
+
+        // 04.Video Popup 
+        $(".img-popup").magnificPopup({
+            type: "image",
+            gallery: {
+                enabled: true,
+            },
+        });
+
+        $('.video-popup').magnificPopup({
+            type: 'iframe',
+            callbacks: {
+            }
+        });
+
+        // 05. Counterup 
+        $(".count").counterUp({
+            delay: 15,
+            time: 4000,
+        });
+
+        // 06.Wow Animation 
+        new WOW().init();
+
+        // 07.Nice Select 
+        $('select').niceSelect();
+
+        //  08.Book Slider 
+        if ($('.hero-book-slider').length > 0) {
+            const heroBookSlider = new Swiper(".hero-book-slider", {
+                spaceBetween: 30,
+                speed: 2000,
+                loop: true,
+
+                navigation: {
+                    nextEl: ".array-prev",
+                    prevEl: ".array-next",
+                },
             });
-            $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown ul').css('display', 'none');
-            $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown a').on('click', function(e) {
-                e.preventDefault();
-                $(this).parent('.cr-sub-dropdown').children('ul').slideToggle();
+        }
+
+        if ($('.book-slider').length > 0) {
+            const bookSlider = new Swiper(".book-slider", {
+                spaceBetween: 30,
+                speed: 2000,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    1499: {
+                        slidesPerView: 5,
+                    },
+                    1399: {
+                        slidesPerView: 4,
+                    },
+                    1199: {
+                        slidesPerView: 3,
+                    },
+                    991: {
+                        slidesPerView: 3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
             });
         }
-        sidemenuDropdown();
+
+        if ($('.featured-books-slider').length > 0) {
+            const featuredBookSlider = new Swiper(".featured-books-slider", {
+                spaceBetween: 30,
+                speed: 2000,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+                centeredSlides: true,
+                breakpoints: {
+                    1499: {
+                        slidesPerView: 2,
+                    },
+                    1399: {
+                        slidesPerView: 2,
+                    },
+                    1199: {
+                        slidesPerView: 1,
+                    },
+                    991: {
+                        slidesPerView: 1,
+                    },
+                    767: {
+                        slidesPerView: 1,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+
+        if ($('.book-catagories-slider').length > 0) {
+            const bookCatagoriesSlider = new Swiper(".book-catagories-slider", {
+                spaceBetween: 30,
+                speed: 2000,
+                loop: true,
+                navigation: {
+                    nextEl: ".array-prev",
+                    prevEl: ".array-next",
+                },
+                breakpoints: {
+                    1399: {
+                        slidesPerView: 5,
+                    },
+                    1199: {
+                        slidesPerView: 4,
+                    },
+                    991: {
+                        slidesPerView: 3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        }
+
+        //  09.Testimonial Slider  
+        if ($('.testimonial-slider').length > 0) {
+            const testimonialSlider = new Swiper(".testimonial-slider", {
+                centeredSlides: true,
+                spaceBetween: 30,
+                speed: 2000,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    1399: {
+                        slidesPerView: 3,
+                    },
+                    1199: {
+                        slidesPerView: 2,
+                        centeredSlides: false,
+                    },
+                    991: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        }
+
+        //  10.Team Slider  
+        if ($('.team-slider').length > 0) {
+            const teamSlider = new Swiper(".team-slider", {
+                spaceBetween: 30,
+                speed: 2500,
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".array-prev",
+                    prevEl: ".array-next",
+                },
+                breakpoints: {
+                    1399: {
+                        slidesPerView: 6,
+                    },
+                    1199: {
+                        slidesPerView: 4,
+                    },
+                    991: {
+                        slidesPerView: 3,
+                    },
+                    767: {
+                        slidesPerView: 2,
+                    },
+                    575: {
+                        slidesPerView: 1,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        }
+
+        // 11.Range sliger
+        function getVals() {
+            let parent = this.parentNode;
+            let slides = parent.getElementsByTagName("input");
+            let slide1 = parseFloat(slides[0].value);
+            let slide2 = parseFloat(slides[1].value);
+            if (slide1 > slide2) {
+                let tmp = slide2;
+                slide2 = slide1;
+                slide1 = tmp;
+            }
+
+            let displayElement = parent.getElementsByClassName("rangeValues")[0];
+            displayElement.innerHTML = "$" + slide1 + " - $" + slide2;
+        }
+
+        window.onload = function () {
+            let sliderSections = document.getElementsByClassName("range-slider");
+            for (let x = 0; x < sliderSections.length; x++) {
+                let sliders = sliderSections[x].getElementsByTagName("input");
+                for (let y = 0; y < sliders.length; y++) {
+                    if (sliders[y].type === "range") {
+                        sliders[y].oninput = getVals;
+                        sliders[y].oninput();
+                    }
+                }
+            }
+        }
+
+        progressBar: () => {
+            const pline = document.querySelectorAll(".progressbar.line");
+            const pcircle = document.querySelectorAll(".progressbar.semi-circle");
+            pline.forEach(e => {
+                const line = new ProgressBar.Line(e, {
+                    strokeWidth: 6,
+                    trailWidth: 6,
+                    duration: 3000,
+                    easing: 'easeInOut',
+                    text: {
+                        style: {
+                            color: 'inherit',
+                            position: 'absolute',
+                            right: '0',
+                            top: '-30px',
+                            padding: 0,
+                            margin: 0,
+                            transform: null
+                        },
+                        autoStyleContainer: false
+                    },
+                    step: (state, line) => {
+                        line.setText(Math.round(line.value() * 100) + ' %');
+                    }
+                });
+                let value = e.getAttribute('data-value') / 100;
+                new Waypoint({
+                    element: e,
+                    handler: function () {
+                        line.animate(value);
+                    },
+                    offset: 'bottom-in-view',
+                })
+            });
+            pcircle.forEach(e => {
+                const circle = new ProgressBar.SemiCircle(e, {
+                    strokeWidth: 6,
+                    trailWidth: 6,
+                    duration: 2000,
+                    easing: 'easeInOut',
+                    step: (state, circle) => {
+                        circle.setText(Math.round(circle.value() * 100));
+                    }
+                });
+                let value = e.getAttribute('data-value') / 100;
+                new Waypoint({
+                    element: e,
+                    handler: function () {
+                        circle.animate(value);
+                    },
+                    offset: 'bottom-in-view',
+                })
+            });
+        }
+
+        const rangeInput = document.querySelectorAll(".range-input input"),
+            priceInput = document.querySelectorAll(".price-input input"),
+            range = document.querySelector(".slider .progress");
+        let priceGap = 1000;
+
+        priceInput.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minPrice = parseInt(priceInput[0].value),
+                    maxPrice = parseInt(priceInput[1].value);
+
+                if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+                    if (e.target.className === "input-min") {
+                        rangeInput[0].value = minPrice;
+                        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+                    } else {
+                        rangeInput[1].value = maxPrice;
+                        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                    }
+                }
+            });
+        });
+
+        rangeInput.forEach((input) => {
+            input.addEventListener("input", (e) => {
+                let minVal = parseInt(rangeInput[0].value),
+                    maxVal = parseInt(rangeInput[1].value);
+
+                if (maxVal - minVal < priceGap) {
+                    if (e.target.className === "range-min") {
+                        rangeInput[0].value = maxVal - priceGap;
+                    } else {
+                        rangeInput[1].value = minVal + priceGap;
+                    }
+                } else {
+                    priceInput[0].value = minVal;
+                    priceInput[1].value = maxVal;
+                    range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+                    range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+                }
+            });
+        });
+
+        //12. Quantity 
+        const inputs = document.querySelectorAll('#qty, #qty2, #qty3');
+        const btnminus = document.querySelectorAll('.qtyminus');
+        const btnplus = document.querySelectorAll('.qtyplus');
+
+        if (inputs.length > 0 && btnminus.length > 0 && btnplus.length > 0) {
+
+            inputs.forEach(function (input, index) {
+                const min = Number(input.getAttribute('min'));
+                const max = Number(input.getAttribute('max'));
+                const step = Number(input.getAttribute('step'));
+
+                function qtyminus(e) {
+                    const current = Number(input.value);
+                    const newval = (current - step);
+                    if (newval < min) {
+                        newval = min;
+                    } else if (newval > max) {
+                        newval = max;
+                    }
+                    input.value = Number(newval);
+                    e.preventDefault();
+                }
+
+                function qtyplus(e) {
+                    const current = Number(input.value);
+                    const newval = (current + step);
+                    if (newval > max) newval = max;
+                    input.value = Number(newval);
+                    e.preventDefault();
+                }
+
+                btnminus[index].addEventListener('click', qtyminus);
+                btnplus[index].addEventListener('click', qtyplus);
+            });
+        }
+
+        // 13.Back to top btn    
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 20) {
+                $("#back-top").addClass("show");
+            } else {
+                $("#back-top").removeClass("show");
+            }
+        });
+        $("#back-top").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+
+        // 14.Category-click
+        $(".bd-category__click").click(function () {
+            $(this).siblings(".category__items, .category__items-2, .category__items-3, .category__items-4").slideToggle();
+            $(this).toggleClass("items-open");
+        });
+
+        //  15.Gsap Animation 
+        if ($('.cursor-follower').length > 0) {
+            var follower = $(".cursor-follower");
+
+            var posX = 0,
+                posY = 0;
+
+            var mouseX = 0,
+                mouseY = 0;
+
+            TweenMax.to({}, 0.016, {
+                repeat: -1,
+                onRepeat: function () {
+                    posX += (mouseX - posX) / 9;
+                    posY += (mouseY - posY) / 9;
+
+                    TweenMax.set(follower, {
+                        css: {
+                            left: posX - 12,
+                            top: posY - 12
+                        }
+                    });
+                }
+            });
+
+            $(document).on("mousemove", function (e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+        }
+
+    }); // End Document Ready Function
+
+
+
+    function loader() {
+        $(window).on('load', function () {
+            // Animate loader off screen
+            $(".preloader").addClass('loaded');
+            $(".preloader").delay(600).fadeOut();
+        });
     }
 
+    loader();
 
 
-})(jQuery);
+})(jQuery); // End jQuery
+
