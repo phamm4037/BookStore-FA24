@@ -12,6 +12,7 @@ import entity.Product;
 import java.lang.*;
 import java.util.*;
 import java.io.*;
+import java.math.BigDecimal;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ProductDAO extends GenericDAO<Product>{
 
     @Override
     public int insert(Product t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return insertGenericDAO(t);
     }
 
     public Product findById(Product product) {
@@ -103,4 +104,48 @@ public class ProductDAO extends GenericDAO<Product>{
         parameterMap = new LinkedHashMap<>();
         return findTotalRecordGenericDAO(Product.class, sql, parameterMap);
     }
+
+    public void deleteById(int id) {
+        String sql = "DELETE FROM [dbo].[Product]\n"
+                + "      WHERE product_id = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("product_id", id);
+        deleteGenericDAO(sql, parameterMap);
+    }
+
+    public void update(Product product) {
+        String sql = "UPDATE [dbo].[Product]\n"
+                + "   SET [title] = ?\n"
+                + "      ,[author] = ?\n"
+                + "      ,[publisher] = ?\n"
+                + "      ,[publication_year] = ?\n"
+                + "      ,[price] = ?\n"
+                + "      ,[stock_quantity] = ?\n"
+                + "      ,[image_url] = ?\n"
+                + " WHERE product_id = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("title", product.getTitle());
+        parameterMap.put("author", product.getAuthor());
+        parameterMap.put("publisher", product.getPublisher());
+        parameterMap.put("publication_year", product.getPublication_year());
+        parameterMap.put("price", product.getPrice());
+        parameterMap.put("stock_quantity", product.getStock_quantity());
+        parameterMap.put("image_url", product.getImage_url());
+        parameterMap.put("product_id", product.getProduct_id());
+        updateGenericDAO(sql, parameterMap);
+    }
+    
+    public List<Product> findByPage(int page) {
+        String sql = "SELECT *\n"
+                + "  FROM Product\n"
+                + "  ORDER BY product_id\n"
+                + "  OFFSET ? ROWS\n" //( PAGE - 1 ) * Y
+                + "  FETCH NEXT ? ROWS ONLY"; // NUMBER_RECORD_PER_PAGE
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("offset", (page - 1) * CommonConst.RECORD_PER_PAGE);
+        parameterMap.put("fetch", CommonConst.RECORD_PER_PAGE);
+        return queryGenericDAO(Product.class, sql, parameterMap);
+
+    }
+
 }

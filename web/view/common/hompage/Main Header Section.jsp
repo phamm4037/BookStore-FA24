@@ -123,7 +123,7 @@
                                     <a href="wishlist.html" class="cart-icon">
                                         <i class="fa-regular fa-heart"></i>
                                     </a>
-                                    <a href="shop-cart.html" class="cart-icon">
+                                    <a href="view/user/payment/cart.jsp" class="cart-icon">
                                         <i class="fa-regular fa-cart-shopping"></i>
                                     </a>
                                     <div class="header-humbager ml-30">

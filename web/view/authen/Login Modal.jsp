@@ -16,35 +16,16 @@
                     <div class="identityBox">
                         <div class="form-wrapper">
                             <h1 id="loginModalLabel">welcome back!</h1>
-                            <input class="inputField" type="email" name="email" placeholder="Email Address">
-                            <input class="inputField" type="password" name="password" placeholder="Enter Password">
-                            <div class="input-check remember-me">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                        id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
+                            <form action="authen?action=login" method="POST">
+                                <input class="inputField" type="username" name="username" placeholder="Enter Username">
+                                <input class="inputField" type="password" name="password" placeholder="Enter Password">
+                                <div class="input-check remember-me">
+                                    <span style="color:red">${loginError}</span>
                                 </div>
-                                <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
-                            </div>
-                            <div class="loginBtn">
-                                <a href="index-2.html" class="theme-btn rounded-0"> Log in </a>
-                            </div>
-                            <div class="orting-badge">
-                                Or
-                            </div>
-                            <div>
-                                <a class="another-option" href="https://www.google.com/">
-                                    <img src="${pageContext.request.contextPath}/img/google.png" alt="google">
-                                    Continue With Google
-                                </a>
-                            </div>
-                            <div>
-                                <a class="another-option another-option-two" href="https://www.facebook.com/">
-                                    <img src="${pageContext.request.contextPath}/img/facebook.png" alt="google">
-                                    Continue With Facebook
-                                </a>
-                            </div>
-
+                                <div class="loginBtn">
+                                    <a onclick="return this.closest('form').submit()" class="theme-btn rounded-0"> Log in </a>
+                                </div> 
+                            </form>                           
                             <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault">
                                 <label class="form-check-label">

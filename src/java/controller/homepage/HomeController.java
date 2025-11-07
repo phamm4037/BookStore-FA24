@@ -30,10 +30,11 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
         PageControl pageControl = new PageControl();
         List<Product> listProduct = findProductDoGet(request, pageControl);
         List<Category> listCategory = categoryDAO.findAll();
+        
+        
         
         //set 2 list vao trogn sesssion
         HttpSession session = request.getSession();
@@ -88,7 +89,7 @@ public class HomeController extends HttpServlet {
                 break;
             default:
                 totalRecord = productDAO.findTotalRecord();
-                listProduct = productDAO.findAll();
+                listProduct = productDAO.findByPage(page);
                 pageControl.setUrlPattern(requestURL + "?");
         }
         //total page

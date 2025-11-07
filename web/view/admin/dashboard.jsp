@@ -29,7 +29,11 @@
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet">
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/colReorder-bootstrap4.css">
-
+        <style>
+            .error{
+                color:red;
+            }
+        </style>
     </head>
 
     <body id="page-top">
@@ -49,8 +53,6 @@
                 <jsp:include page="../common/admin/breadcrumbs.jsp"></jsp:include>
 
                     <!-- Icon Cards-->
-                <jsp:include page="../common/admin/iconCard.jsp"></jsp:include>
-
 
                     <!-- DataTables Example -->
                     <div class="card mb-3">
@@ -70,26 +72,42 @@
                                             <th>Publisher</th>
                                             <th>Publication Year</th>
                                             <th>Price</th>
+                                            <th>Img URL</th>
                                             <th>Stock Quantity</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${listProduct}" var="p">
                                         <tr>
-                                            <td>${p.product_id}</td>
-                                            <th>
+                                            <td name="id">${p.product_id}</td>
+                                            <td name="category_id">
                                                 <c:forEach items="${listCategory}" var="c">
                                                     <c:if test="${c.category_id == p.category_id}">
                                                         ${c.category_name}
                                                     </c:if>
                                                 </c:forEach>
-                                            </th>
-                                            <td>${p.title}</td>
-                                            <td>${p.author}</td>
-                                            <td>${p.publisher}</td>
-                                            <td>${p.publication_year}</td>
-                                            <td>${p.price}</td>
-                                            <th>${p.stock_quantity}</th>
+                                            </td>
+                                            <td name="title">${p.title}</td>
+                                            <td name="author">${p.author}</td>
+                                            <td name="publisher">${p.publisher}</td>
+                                            <td name="publication_year">${p.publication_year}</td>
+                                            <td name="price">${p.price}</td>
+                                            <td name="imgage_url">${p.image_url}</td>
+                                            <td name="stock_quantity">${p.stock_quantity}</td>
+                                            <td>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-toggle="modal" 
+                                                            data-target="#editProductModal"
+                                                            onclick="editProductModal(this)">
+                                                        Edit
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger" 
+                                                            data-toggle="modal" data-target="#delete-product-modal"
+                                                            onclick="deleteProductModal(${p.product_id})">
+                                                        Delete
+                                                    </button>
+                                                </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -118,7 +136,10 @@
 
         <!-- Logout Modal-->
         <jsp:include page="../common/admin/Logout Modal.jsp"></jsp:include>
-
+        
+        <jsp:include page="addProductModal.jsp"></jsp:include>
+        <jsp:include page="deleteProductModal.jsp"></jsp:include>
+        <jsp:include page="editProductModal.jsp"></jsp:include>
         <!-- Bootstrap core JavaScript-->
         <script src="${pageContext.request.contextPath}/vender-admin/jquery/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/vender-admin/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -141,20 +162,6 @@
         <script src="${pageContext.request.contextPath}/js/admin/demo/chart-area-demo.js"></script>
         <script src="${pageContext.request.contextPath}/js/admin/colReorder-dataTables-min.js"></script>
         <script src="${pageContext.request.contextPath}/js/admin/colReorder-bootstrap4-min.js"></script>
-
-        <script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable({
-            "pageLength": 10,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
-        });
-    });
-        </script>
-
 
     </body>
 

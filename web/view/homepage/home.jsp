@@ -7,8 +7,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!doctype html>
-<!DOCTYPE html>
 <html lang="en">
 <!--<< Header Area >>-->
 
@@ -60,7 +58,7 @@
     <!-- Offcanvas Area start  -->
     <jsp:include page="../common/hompage/Offcanvas Area.jsp"></jsp:include>
     <div class="offcanvas__overlay"></div>
-    <jsp:include page="../common/hompage/Preloader.jsp"></jsp:include>
+    <jsp:include page="../common/hompage/header top.jsp"></jsp:include>
 
     <!-- Sticky Header Section start  -->
     <jsp:include page="../common/hompage/Sticky Header.jsp"></jsp:include>
@@ -69,10 +67,10 @@
     <jsp:include page="../common/hompage/Main Header Section.jsp"></jsp:include>
 
      <!-- Login Modal -->
-    <jsp:include page="../common/hompage/Login Modal.jsp"></jsp:include>
+    <jsp:include page="../authen/Login Modal.jsp"></jsp:include>
     
     <!-- Registration Modal -->
-    <jsp:include page="../common/hompage/Registration Modal.jsp"></jsp:include>
+    <jsp:include page="../authen/register.jsp"></jsp:include>
 
     <!-- Breadcumb Section Start -->
     <jsp:include page="../common/hompage/Breadcumb Section.jsp"></jsp:include>
@@ -196,7 +194,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="single-sidebar-widget mb-50">
                                 <div class="wid-title">
@@ -417,6 +414,27 @@
     <script src="${pageContext.request.contextPath}/js/gsap.min.js"></script>
     <!--<< Main.js >>-->
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
+    <c:if test="${not empty showLoginModal}">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            });
+        </script>
+    </c:if>
+
+    <c:if test="${not empty showSignUpModal}">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var signUpModal = new bootstrap.Modal(document.getElementById('signUpModal'));
+                signUpModal.show();
+            });
+        </script>
+        <%-- Xóa session sau khi hiển thị --%>
+        <c:remove var="showSignUpModal" scope="session"/>
+    </c:if>
+
+
 </body>
 
 
